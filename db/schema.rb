@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_20_204630) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_20_210328) do
   create_table "alerts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_alerts_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -39,5 +50,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_20_204630) do
   end
 
   add_foreign_key "alerts", "users"
+  add_foreign_key "comments", "users"
   add_foreign_key "events", "users"
 end

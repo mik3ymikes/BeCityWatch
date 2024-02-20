@@ -8,8 +8,9 @@ class User < ApplicationRecord
     }
 
 
-    has_many :alerts
-    has_many :events
+    has_many :alerts, dependent: :destroy
+    has_many :events, dependent: :destroy
+    has_many :comments, dependent: :destroy
     
     private
     def vaildate_username
