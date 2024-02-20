@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
 
     has_many :alerts
+    has_many :events
+    
     private
     def vaildate_username
         unless username =~ /\A[a-zA-Z0-9_]+\Z/
