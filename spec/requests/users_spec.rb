@@ -40,7 +40,7 @@ RSpec.describe "Users", type: :request do
 
     #create
     
-    describe "User /users" do
+    describe "POST /users" do
       # let(:token) {auth_token_for_user(user)}
       
       context "with valid params" do
@@ -48,7 +48,7 @@ RSpec.describe "Users", type: :request do
      
     
       before do
-        user_attributes = attributes_for(:user, user_id:user.id)
+        user_attributes = attributes_for(:user)
         # post "/users", params: post_attributes, headers: {Authorization: "Bearer #{token}"}
         post "/users", params: user_attributes
       end
@@ -66,7 +66,7 @@ RSpec.describe "Users", type: :request do
      
     
       before do
-        user_attributes = attributes_for(:user, content: nil)
+        user_attributes = attributes_for(:user, username: nil)
         # post "/users", params: user_attributes, headers: {Authorization: "Bearer #{token}"}
         post "/users", params: user_attributes
       end
@@ -88,14 +88,14 @@ RSpec.describe "Users", type: :request do
     
       before do
         # put "/posts/#{post.id}", params: post_attributes, headers: {Authorization: "Bearer #{token}"}
-        user_attributes = attributes_for(:user, content: "updated content")
+        user_attributes = {username: "cat"}
         put "/users/#{user.id}", params: user_attributes
         # post.reload
       end
     
       it "updates a user" do
         user.reload
-        expect(user.content).to eq("updated content")
+        expect(user.username).to eq("cat")
       end
     
       it "returns a success response" do
@@ -107,7 +107,7 @@ RSpec.describe "Users", type: :request do
       let(:user) { create(:user) }
     
       before do
-        user_attributes = {content: nil}
+        user_attributes = {username: nil}
         # put "/users/#{post.id}", params: user_attributes, headers: {Authorization: "Bearer #{token}"}
         put "/users/#{user.id}", params: user_attributes
       end
