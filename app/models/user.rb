@@ -6,6 +6,7 @@ class User < ApplicationRecord
     format: {
         with: URI::MailTo::EMAIL_REGEXP
     }
+    validates :zipcode, presence: true, length: { maximum: 5 }, numericality: { only_integer: true }
 
 
     has_many :alerts, dependent: :destroy
