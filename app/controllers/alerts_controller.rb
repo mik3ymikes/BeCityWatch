@@ -1,8 +1,18 @@
 class AlertsController < ApplicationController
-    before_action :set_alert, only:[:update, :destroy]
+    before_action :set_alert, only:[:update, :destroy, :show]
     # before_action :authenticate_request, only: [:index, :show, :update, :destroy]
     
-      def create
+      
+    def index
+      alerts=Alert.all
+      render json:alerts, status: :ok
+    end
+    
+    def show
+     render json: @alert, status: :ok
+    end
+    
+    def create
        alert=Alert.new(alert_params)
     
        if alert.save

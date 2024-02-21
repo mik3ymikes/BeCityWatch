@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :alert do
-    user { nil }
-    content { "MyText" }
+    content {Faker::Lorem.paragraph}
+    user
   end
 end

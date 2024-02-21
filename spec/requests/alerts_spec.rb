@@ -34,7 +34,7 @@ RSpec.describe "Alerts", type: :request do
     end
     
     it "returns a response with the correct alert" do
-      expect(response.body).to eq(post.to_json)
+      expect(response.body).to eq(alert.to_json)
     end
     end
 
@@ -94,7 +94,7 @@ RSpec.describe "Alerts", type: :request do
       end
     
       it "updates a alert" do
-        # alert.reload
+        alert.reload
         expect(alert.content).to eq("updated content")
       end
     
@@ -107,7 +107,7 @@ RSpec.describe "Alerts", type: :request do
       let(:alert) { create(:alert) }
     
       before do
-        alert_attributes = attributes_for{content: nil}
+        alert_attributes = {content: nil}
         # put "/alerts/#{post.id}", params: alert_attributes, headers: {Authorization: "Bearer #{token}"}
         put "/alerts/#{alert.id}", params: alert_attributes
       end
