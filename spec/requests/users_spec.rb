@@ -106,11 +106,12 @@ RSpec.describe "Users", type: :request do
     
     context "with invalid params" do
       let(:user) { create(:user) }
+      let(:token) {auth_token_for_user(user)}
     
       before do
         user_attributes = {username: nil}
-        # put "/users/#{post.id}", params: user_attributes, headers: {Authorization: "Bearer #{token}"}
-        put "/users/#{user.id}", params: user_attributes
+
+        put "/users/#{user.id}", params: user_attributes, params: user_attributes, headers: {Authorization: "Bearer #{token}"}
       end
     
       it "returns a response with errors" do

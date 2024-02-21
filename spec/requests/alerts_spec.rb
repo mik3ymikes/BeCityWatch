@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Alerts", type: :request do
   describe "GET /alerts" do
-    let(:post) { create(:post) }
+    let(:user) { create(:user) }
     let(:token) {auth_token_for_user(user)}
     let (:alert) {create(:alert)}
 
@@ -23,7 +23,7 @@ RSpec.describe "Alerts", type: :request do
     #  show
     describe "GET /alerts/:id" do
     let(:alert) { create(:alert) }
-    let(:post) { create(:post) }
+    let(:user) { create(:user) }
     let(:token) {auth_token_for_user(user)}
     
     before do
@@ -64,7 +64,7 @@ RSpec.describe "Alerts", type: :request do
     end
     
     context "with invalid params" do
-     
+      
     
       before do
         alert_attributes = attributes_for(:alert, content: nil)

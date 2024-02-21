@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
     before_action :set_alert, only:[:update, :destroy, :show]
-    # before_action :authenticate_request, only: [:index, :show, :update, :destroy]
+    before_action :authenticate_request, only: [:index, :show, :update, :destroy]
     
       
     def index
