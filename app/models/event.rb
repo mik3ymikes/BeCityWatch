@@ -10,8 +10,8 @@ class Event < ApplicationRecord
   def start_date_time_cannot_be_in_past
    
 
-    if start_date_time.present? && start_date_time <DateTime.now
-      errors.add(:start_date_time, "cant be in the the past")
+    if start_date_time.present? && start_date_time < DateTime.now
+      errors.add(:start_date_time, "can't be in the past")
     end
   end
 

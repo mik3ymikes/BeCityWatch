@@ -12,6 +12,9 @@ class User < ApplicationRecord
     has_many :alerts, dependent: :destroy
     has_many :events, dependent: :destroy
     has_many :comments, dependent: :destroy
+
+    has_many :created_events, class_name: "Event", foreign_key: "user_id"
+
     
     private
     def vaildate_username
