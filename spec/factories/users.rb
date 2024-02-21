@@ -3,6 +3,7 @@ FactoryBot.define do
     username { Faker::Internet.username(specifier:3..20, separators: %w(_)) }
     email {Faker::Internet.email}
     password {'password'}
+    password_confirmation{'password'}
     zipcode {63857}
   end
 end

@@ -1,23 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it "is not vailid without a username" do 
-    user=build(:user, username: nil)
-    expect(user).not_to be_valid
+
+  context 'Validations test' do
+    it "is not vailid without a username" do 
+      user=build(:user, username: nil)
+      expect(user).not_to be_valid
+
+  end
+  # password
+  
+  
+  it "is invailid when password is nil" do
+    user=build(:user, password:nil)    
   end
   
-    # password
   
-    it "is invailid when password is nil" do
-      user=build(:user, password:nil)    
-    end
-
-
   it 'is not valid without an email ' do
     user=build(:user, email: nil)
     expect(user).not_to be_valid
   end
-
+  
 
   it 'is not valid without an zipcode ' do
     user=build(:user, zipcode: nil)
@@ -25,8 +28,31 @@ RSpec.describe User, type: :model do
   end
 
 
+# password
+
+it "is invailid when password is nil" do
+  user=build(:user, password:nil)    
+end
+
+  # password confimration
+  it "is invailid when password_confirmation is nil" do
+    user=build(:user, password_confirmation:nil)    
+  end
 
 
+# hashes the pass
+it 'hashes the password' do
+  user=create(:user)
+  expect(user.password_digest).not_to eq 'password'
+end
+
+
+
+end
+
+  
+  
+  
 context 'Uniqueness tests' do
   it 'is not valid without a unique username' do
     user1=create(:user)
