@@ -4,10 +4,11 @@ RSpec.describe "Users", type: :request do
   describe "GET /users" do
    
     let (:user) {create(:user)}
+    let(:token) {auth_token_for_user(user)}
 
     before do
       user
-      get "/users"
+     get "/users", headers: {Authorization: "Bearer #{token}"}
     end
     
     it "returns a success response" do
@@ -22,11 +23,11 @@ RSpec.describe "Users", type: :request do
     #  show
     describe "GET /users/:id" do
     let(:user) { create(:user) }
-    # let(:user) { create(:user) }
-    # let(:token) {auth_token_for_user(user)}
+    let(:token) {auth_token_for_user(user)}
+    
     
     before do
-      get "/users/#{user.id}"
+      get "/users/#{user.id}", headers: {Authorization: "Bearer #{token}"}
     end
     
     it "returns a success response" do
@@ -82,14 +83,14 @@ RSpec.describe "Users", type: :request do
     describe "PUT /users/:id" do
       context "with valid params" do
     let(:user) { create(:user) }
-    # let(:token) {auth_token_for_user(user)}
+    let(:token) {auth_token_for_user(user)}
     
     
     
       before do
-        # put "/posts/#{post.id}", params: post_attributes, headers: {Authorization: "Bearer #{token}"}
+        put "/users/#{user.id}", params: user_attributes, headers: {Authorization: "Bearer #{token}"}
         user_attributes = {username: "cat"}
-        put "/users/#{user.id}", params: user_attributes
+       
         # post.reload
       end
     
@@ -122,11 +123,10 @@ RSpec.describe "Users", type: :request do
     #destroy
     describe "DELETE /users/:id" do
     let(:user) { create(:user) }
-    # let(:user) { create(:user) }
-    # let(:token) {auth_token_for_user(user)}
+    let(:token) {auth_token_for_user(user)}
     
     before do
-      # delete "/posts/#{post.id}", headers: {Authorization: "Bearer #{token}"}
+      delete "/users/#{user.id}", headers: {Authorization: "Bearer #{token}"}
       delete "/users/#{user.id}"
 
     end

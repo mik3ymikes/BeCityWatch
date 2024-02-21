@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "Alerts", type: :request do
   describe "GET /alerts" do
-    
+    let(:post) { create(:post) }
+    let(:token) {auth_token_for_user(user)}
     let (:alert) {create(:alert)}
 
     before do
       alert
-      get "/alerts"
+      get "/alerts", headers: {Authorization: "Bearer #{token}"}
     end
     
     it "returns a success response" do
@@ -22,11 +23,11 @@ RSpec.describe "Alerts", type: :request do
     #  show
     describe "GET /alerts/:id" do
     let(:alert) { create(:alert) }
-    # let(:user) { create(:user) }
-    # let(:token) {auth_token_for_user(user)}
+    let(:post) { create(:post) }
+    let(:token) {auth_token_for_user(user)}
     
     before do
-      get "/alerts/#{alert.id}"
+      get "/alerts/#{alert.id}", headers: {Authorization: "Bearer #{token}"}
     end
     
     it "returns a success response" do
@@ -41,16 +42,16 @@ RSpec.describe "Alerts", type: :request do
     #create
     
     describe "Alert /alerts" do
-      # let(:token) {auth_token_for_user(user)}
+      let(:user) { create(:user) }
+      let(:token) {auth_token_for_user(user)}
       
       context "with valid params" do
-        let(:user) { create(:user) }
      
     
       before do
         alert_attributes = attributes_for(:alert, user_id:user.id)
-        # post "/alerts", params: post_attributes, headers: {Authorization: "Bearer #{token}"}
-        post "/alerts", params: alert_attributes
+        
+        post "/alerts", params: alert_attributes, headers: {Authorization: "Bearer #{token}"}
       end
     
       it "returns a success response" do
@@ -67,8 +68,8 @@ RSpec.describe "Alerts", type: :request do
     
       before do
         alert_attributes = attributes_for(:alert, content: nil)
-        # post "/alerts", params: alert_attributes, headers: {Authorization: "Bearer #{token}"}
-        post "/alerts", params: alert_attributes
+       
+        post "/alerts", params: alert_attributes, headers: {Authorization: "Bearer #{token}"}
       end
     
       it "returns a response with errors" do
@@ -80,14 +81,14 @@ RSpec.describe "Alerts", type: :request do
     # update
 
     describe "PUT /alerts/:id" do
+      let(:user) { create(:user) }
+      let(:token) {auth_token_for_user(user)}
+      
       context "with valid params" do
-    let(:alert) { create(:alert) }
-    # let(:token) {auth_token_for_user(user)}
-    
-    
+        let(:alert) { create(:alert) }
     
       before do
-        # put "/posts/#{post.id}", params: post_attributes, headers: {Authorization: "Bearer #{token}"}
+       
         alert_attributes = attributes_for(:alert, content: "updated content")
         put "/alerts/#{alert.id}", params: alert_attributes
         # post.reload
@@ -108,8 +109,8 @@ RSpec.describe "Alerts", type: :request do
     
       before do
         alert_attributes = {content: nil}
-        # put "/alerts/#{post.id}", params: alert_attributes, headers: {Authorization: "Bearer #{token}"}
-        put "/alerts/#{alert.id}", params: alert_attributes
+       
+        put "/alerts/#{alert.id}", params: alert_attributes, headers: {Authorization: "Bearer #{token}"}
       end
     
       it "returns a response with errors" do
@@ -122,12 +123,12 @@ RSpec.describe "Alerts", type: :request do
     #destroy
     describe "DELETE /alerts/:id" do
     let(:alert) { create(:alert) }
-    # let(:user) { create(:user) }
-    # let(:token) {auth_token_for_user(user)}
+    let(:user) { create(:user) }
+    let(:token) {auth_token_for_user(user)}
     
     before do
-      # delete "/posts/#{post.id}", headers: {Authorization: "Bearer #{token}"}
-      delete "/alerts/#{alert.id}"
+      
+      delete "/alerts/#{alert.id}", headers: {Authorization: "Bearer #{token}"}
 
     end
     
