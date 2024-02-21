@@ -39,15 +39,8 @@ RSpec.describe Event, type: :model do
       expect(event.comments.count).to eq(3)
     end
   
-  #   it 'has many sports' do
-  #     event=create(:event)
-  #     create_list(:sport, 3, events: [event])
-  
-  #     event.reload
-  #     expect(event.sports.count).to eq (3)
-  #   end
-   end
-  
+ 
+  end   
   context "destroy related associations" do
          it "destroy event participants" do
         event =create(:event)
