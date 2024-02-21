@@ -52,12 +52,12 @@ RSpec.describe "Events", type: :request do
       let (:event) {create(:event)}
 
       before do
-        put "/events/#{event.id}", params: {title: "New Title"}, headers: {Authorization: "Bearer #{token}"}
+        put "/events/#{event.id}", params: {content: "content"}, headers: {Authorization: "Bearer #{token}"}
       end
 
       it 'updates an event' do
         event.reload
-        expect(event.title).to eq("New Title")
+        expect(event.content).to eq("content")
       end
     end
 
