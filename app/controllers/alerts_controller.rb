@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
     before_action :set_alert, only:[:update, :destroy, :show]
-    before_action :authenticate_request, only: [:index, :show, :update, :destroy]
+    # before_action :authenticate_request, only: [:index, :show, :update, :destroy]
     
       
     def index
@@ -13,7 +13,7 @@ class AlertsController < ApplicationController
     end
     
     def create
-       alert=Alert.new(alert_params)
+       alert=@current_user.alerts.new(alert_params)
     
        if alert.save
         render json: alert, status: :created
@@ -46,6 +46,6 @@ class AlertsController < ApplicationController
       end
     
       def alert_params
-        params.permit(:content, :user_id)
+        params.permit(:content)
       end
 end

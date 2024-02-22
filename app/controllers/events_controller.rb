@@ -21,16 +21,7 @@ class EventsController < ApplicationController
         render json: @event, status: :ok
      end
 
-    #  def create
-    #     event=Event.new(event_params)
-
-    #     if event.save
-    #         render json:even, status :created
-
-    #     else
-    #         render json: event.errors, status :unprocessable_entity
-    #     end
-    #  end
+   
  
      def create
        event=@current_user.created_events.new(event_params)
@@ -71,7 +62,7 @@ class EventsController < ApplicationController
      end
  
      def event_params
-         params.permit(:content, :start_date_time, :end_date_time, :user_id)
+         params.permit(:content, :start_date_time, :end_date_time)
      end
  end
  

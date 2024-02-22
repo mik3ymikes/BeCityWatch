@@ -49,7 +49,7 @@ RSpec.describe "Alerts", type: :request do
      
     
       before do
-        alert_attributes = attributes_for(:alert, user_id:user.id)
+        alert_attributes = attributes_for(:alert)
         
         post "/alerts", params: alert_attributes, headers: {Authorization: "Bearer #{token}"}
       end
