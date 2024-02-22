@@ -128,7 +128,7 @@ RSpec.describe "Users", type: :request do
     
     before do
       delete "/users/#{user.id}", headers: {Authorization: "Bearer #{token}"}
-      delete "/users/#{user.id}"
+    
 
     end
     
