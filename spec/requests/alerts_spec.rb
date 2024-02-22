@@ -90,7 +90,7 @@ RSpec.describe "Alerts", type: :request do
       before do
        
         alert_attributes = attributes_for(:alert, content: "updated content")
-        put "/alerts/#{alert.id}", params: alert_attributes
+        put "/alerts/#{alert.id}", params: alert_attributes, headers: {Authorization: "Bearer #{token}"}
         # post.reload
       end
     

@@ -88,8 +88,8 @@ RSpec.describe "Users", type: :request do
     
     
       before do
-        put "/users/#{user.id}", params: user_attributes, headers: {Authorization: "Bearer #{token}"}
         user_attributes = {username: "cat"}
+        put "/users/#{user.id}", params: user_attributes, headers: {Authorization: "Bearer #{token}"}
        
         # post.reload
       end

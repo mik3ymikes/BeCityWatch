@@ -26,7 +26,7 @@ class AlertsController < ApplicationController
         if @alert.update(alert_params)
           render json: @alert, status: :ok
         else
-             render json: @alert.errors, status: :unprocessable_entity
+             render json: @alert.errors.full_messages, status: :unprocessable_entity
         end
       end
     
