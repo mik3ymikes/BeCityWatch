@@ -2,7 +2,7 @@ class AlertsController < ApplicationController
     before_action :set_alert, only:[:update, :destroy, :show]
     # before_action :authenticate_request, only: [:index, :show, :update, :destroy]
     # fixed issue but may have to look into this
-    # before_action :authenticate_request, only: [:create]
+    before_action :authenticate_request, only: [:create]
       
     def index
       alerts=Alert.all
