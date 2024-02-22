@@ -18,6 +18,7 @@ RSpec.describe "Events", type: :request do
     # get event-show
     describe "GET /event" do
       let (:event) {create(:event)}
+      let(:token) {auth_token_for_user(user)}
 
       it "returns a response with a specified event" do
         get "/events/#{event.id}", headers: {Authorization: "Bearer #{token}"}
@@ -63,7 +64,7 @@ RSpec.describe "Events", type: :request do
 
     # delete -destroy
     let(:user) {create(:user)}
-      let(:token) {auth_token_for_user(user)}
+      let(:token) {auth_token_for_user(user) }
     describe "DELETE/events/:id" do
       let(:event) { create(:event) }
   

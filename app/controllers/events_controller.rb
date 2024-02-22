@@ -20,6 +20,17 @@ class EventsController < ApplicationController
      def show
         render json: @event, status: :ok
      end
+
+    #  def create
+    #     event=Event.new(event_params)
+
+    #     if event.save
+    #         render json:even, status :created
+
+    #     else
+    #         render json: event.errors, status :unprocessable_entity
+    #     end
+    #  end
  
     #  def create
     #    event=@current_user.created_events.new(event_params)
