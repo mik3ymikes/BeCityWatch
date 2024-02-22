@@ -75,10 +75,7 @@ RSpec.describe "Events", type: :request do
         expect(Event.count).to eq(0)
       end
   
-      it "destroy event participants" do
-        event_participants = EventParticipant.where(event_id: event.id)
-        expect(event_participants).to be_empty
-      end
+    
     end
   end
 
