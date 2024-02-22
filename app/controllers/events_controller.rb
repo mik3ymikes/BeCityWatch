@@ -32,16 +32,16 @@ class EventsController < ApplicationController
     #     end
     #  end
  
-    #  def create
-    #    event=@current_user.created_events.new(event_params)
+     def create
+       event=@current_user.created_events.new(event_params)
  
-    #    if event.save
-    #      render json: event, status: :created 
+       if event.save
+         render json: event, status: :created 
  
-    #    else
-    #      render json: event.errors, status: :unprocessable_entity
-    #    end
-    #  end
+       else
+         render json: event.errors, status: :unprocessable_entity
+       end
+     end
  
      def update
          if @event.update(event_params)

@@ -13,7 +13,7 @@ class User < ApplicationRecord
     has_many :events, dependent: :destroy
     has_many :comments, dependent: :destroy
 
-    # has_many :created_events, class_name: "Event", foreign_key: "user_id"
+    has_many :created_events, class_name: "Event", foreign_key: "user_id"
 
     
     private
