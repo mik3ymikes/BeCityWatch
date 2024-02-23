@@ -11,13 +11,13 @@
         user.alerts.create(content:Faker::Lorem.paragraph)
     end
 
-    # rand(1..10).times do
-    #     user.created_events.create(
-    #         content: Faker::Lorem.paragraph
-    #         start_date_time: Faker::Time.forward(days:25, period: :morning),
-    #         end_date_time: Faker::Time.forward(days:25, period: :morning),
-    #         title:Faker::Lorem.sentence, 
+    rand(1..10).times do
+        user.created_events.create(
+            content: Faker::Lorem.paragraph,
+            start_date_time: Faker::Time.forward(days:25, period: :morning),
+            end_date_time: Faker::Time.forward(days:25, period: :morning)
+             # title:Faker::Lorem.sentence, 
     
-    #     )
-    # end
+        )
+    end
 end
