@@ -4,7 +4,11 @@ class UserBlueprint < Blueprinter::Base
     identifier :id
     
     view :me do
-        fields :first_name, :last_name, :username, :email
+        fields :username, :email, :zipcode
+    end
+
+    view :normal do
+        fields :username
     end
 
     association :events, blueprint: EventBlueprint, view: :profile do |user, options|
