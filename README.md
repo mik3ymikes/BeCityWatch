@@ -47,10 +47,14 @@
 
 5. This API utilizes over 50 tests to ensure validity. 
 
-Models-Test were written 
+Models-Test were written to make sure usernames, passwords, emails, zipcodes are all present and unique and that test fail when this criteria isnt met. Passwords must be hashed and alerts and comments are all deleted when a user is destroyed.
+
+requests-Test are written to return specified params, such as Bearer token and certain amount of content or deleted content. Session request test are written to verify successful http requests and logins. 
+
+
 
 
 
 # url to your Front end Project's repository
 
-6. 
+6. https://github.com/mik3ymikes/FE-City-Watch-Project
