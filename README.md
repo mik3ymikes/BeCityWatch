@@ -13,7 +13,7 @@
 
 # API's architecture, including the main aspects of your application
 
-2. dfaf
+2. Using the ruby on rails backend architecture, users, alerts, events, and comments can be stored and modified and then fetched to display in the front end. Passwords are encrypted with Bycrypt-hashed and stored in the database in a column called password_digest. The has_secure_password method further adds auth. A JWT string is set once a user logs in (set with a header, payload, and signature)
 
 
 
