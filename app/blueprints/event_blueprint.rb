@@ -7,12 +7,12 @@ class EventBlueprint < Blueprinter::Base
     #     fields :content, :start_date_time, :end_date_time
     # end
 
-    view :profile do
-        fields :content, :start_date_time, :end_date_time
-    end
+    # view :profile do
+    #     fields :content, :start_date_time, :end_date_time
+    # end
 
     view :short do
-        fields :content, :start_date_time, :end_date_time
+        fields :content, :start_date_time, :end_date_time, :title
         association :user, blueprint: UserBlueprint, view: :normal
     end
 end
