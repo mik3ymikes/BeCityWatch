@@ -47,6 +47,6 @@ class AlertsController < ApplicationController
       end
     
       def alert_params
-        params.permit(:content)
+        params.permit(:content, :title)
       end
 end
