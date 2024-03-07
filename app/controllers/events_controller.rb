@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-    before_action :set_event, only: [:show, :update, :destroy]
-    # before_action :authenticate_request, except: [:index]
+    # before_action :set_event, only: [:show, :update, :destroy] maybe need this??!?
+    before_action :authenticate_request, except: [:index]
     # before_action :authenticate_request, only: [:create]
      
      
@@ -25,8 +25,10 @@ class EventsController < ApplicationController
    
  
      def create
-       event=@current_user.created_events.new(event_params)
-    #    event=@current_user.add.event.new(event_params)
+    #    event=@current_user.created_events.new(event_params) may need with created events in user
+
+
+       event=@current_user.add_event.new(event_params)
 
     #    event = @current_user.events.new(event_params)
  
