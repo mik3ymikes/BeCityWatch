@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
     # before_action :set_event, only: [:show, :update, :destroy] maybe need this??!?
-    before_action :authenticate_request, except: [:index]
     # before_action :authenticate_request, only: [:create]
-     
+    
+    # before_action :authenticate_request, except: [:index] current one using later
      
      def index
 
