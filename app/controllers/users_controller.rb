@@ -7,13 +7,13 @@ class UsersController < ApplicationController
         render json:users, status:200
       end
     
-      # def show
-      #   render json: @user, status:200
-      # end
-
       def show
-        render json:  UserBlueprint.render(@user, view: :normal), status:200
+        render json: @user, status:200
       end
+
+      # def show
+      #   render json:  UserBlueprint.render(@user, view: :normal), status:200
+      # end
     
       def create
        user=User.new(user_params)
