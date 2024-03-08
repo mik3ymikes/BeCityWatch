@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  # include Rails.application.routes.url_helpers
+  include Rails.application.routes.url_helpers
   
   validates :content, :start_date_time, :end_date_time, presence: true
   validates :title, presence: true
@@ -9,7 +9,8 @@ class Event < ApplicationRecord
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
-
+  has_one_attached :cover_image
+  
   def start_date_time_cannot_be_in_past
    
 
@@ -24,9 +25,9 @@ class Event < ApplicationRecord
     end
   end
 
-  # def cover_image_url
-  #   #url helpers
-  #   rails_blob_url(self.cover_image, only_path: false) if self.cover_image.attached?
-  # end
+  def cover_image_url
+    #url helpers
+    rails_blob_url(self.cover_image, only_path: false) if self.cover_image.attached?
+  end
 end
 
