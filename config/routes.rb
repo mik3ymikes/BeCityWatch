@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 end
 
   resources :events 
-
+  
 
 # check on this right below idk
 resources :alerts 
@@ -20,4 +20,11 @@ end
   # resources :users do
   #   end
   #   resources :alerts
+  # end
+
+
+
+  # resources :events 
+  # resources :users do
+  #   get 'events', to: "users#events_index"
   # end
