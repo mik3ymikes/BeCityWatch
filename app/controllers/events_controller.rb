@@ -73,5 +73,12 @@ class EventsController < ApplicationController
      def event_params
          params.permit(:content, :start_date_time, :end_date_time, :title, :cover_image)
      end
+
+
+    #  def some_method
+    #     event = Event.find(params[:id])
+    #     username = event.user.username
+    #     # Now you have access to the username associated with the event's user
+    #   end
  end
  
