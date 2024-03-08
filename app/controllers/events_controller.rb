@@ -19,7 +19,8 @@ class EventsController < ApplicationController
      end
  
      def show
-        render json: @event, status: :ok
+        render json:EventBlueprint.render_as_hash(@event,view:long), status: :ok
+        # render json: @event, status: :ok
      end
 
    
