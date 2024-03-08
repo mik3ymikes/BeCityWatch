@@ -2,7 +2,9 @@ class EventsController < ApplicationController
     # before_action :set_event, only: [:show, :update, :destroy] maybe need this??!?
     # before_action :authenticate_request, only: [:create]
     
-    before_action :authenticate_request, except: [:index] 
+    # before_action :authenticate_request, except: [:index] 
+    before_action :set_event, only:[:update, :destroy, :show]
+    before_action :authenticate_request, except: [:index, :show] 
      
      def index
 
@@ -64,6 +66,8 @@ class EventsController < ApplicationController
  
  
      private
+
+ 
  
      def set_event
          @event=Event.find(params[:id])
