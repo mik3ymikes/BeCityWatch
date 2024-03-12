@@ -7,14 +7,14 @@ class EventsController < ApplicationController
     before_action :authenticate_request, except: [:index, :show] 
      
      def index
-        events=Event.all
-        #  events=Event.order(created_at: :desc).page(params[:page]).per(12)
+        # events=Event.all
+         events=Event.order(created_at: :desc).page(params[:page]).per(5)
 
-        # render json:{
-        #  events: EventBlueprint.render_as_hash(events, view: :long),
-        #  total_pages: events.total_pages,
-        #  current_page: events.current_page
-        # }
+        render json:{
+         events: EventBlueprint.render_as_hash(events, view: :long),
+         total_pages: events.total_pages,
+         current_page: events.current_page
+        }
 
 
 
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
         # events: EventBlueprint.render_as_hash(events, view: :long), status: :ok
         # }
 
-        render json:events, status: :ok
+        # render json:events, status: :ok
         # render json:EventBlueprint.render_as_hash(@event, view: :long), status: :ok
      
  
