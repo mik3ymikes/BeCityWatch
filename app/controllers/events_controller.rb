@@ -8,6 +8,15 @@ class EventsController < ApplicationController
      
      def index
         events=Event.all
+        #  events=Event.order(created_at: :desc).page(params[:page]).per(12)
+
+        # render json:{
+        #  events: EventBlueprint.render_as_hash(events, view: :long),
+        #  total_pages: events.total_pages,
+        #  current_page: events.current_page
+        # }
+
+
 
         # render json: {
         # events: EventBlueprint.render_as_hash(events, view: :long), status: :ok
@@ -15,14 +24,8 @@ class EventsController < ApplicationController
 
         render json:events, status: :ok
         # render json:EventBlueprint.render_as_hash(@event, view: :long), status: :ok
-        #  events=Event.order(created_at: :desc).page(params[:page]).per(12)
      
  
-        # render json:{
-        #  events: EventBlueprint.render_as_hash(events, view: :short),
-        #  total_pages: events.total_pages,
-        #  current_page: events.current_page
-        # }
      end
  
      def show
