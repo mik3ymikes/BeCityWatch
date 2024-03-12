@@ -9,6 +9,8 @@
 
     rand(1..10).times do
         user.alerts.create(content:Faker::Lorem.paragraph)
+        user.alerts.create(title:Faker::Lorem.paragraph)
+
     end
 
     rand(1..10).times do
