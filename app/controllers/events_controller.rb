@@ -9,11 +9,11 @@ class EventsController < ApplicationController
      def index
         events=Event.all
 
-        render json: {
-        events: EventBlueprint.render_as_hash(events, view: :long), status: :ok
-        }
+        # render json: {
+        # events: EventBlueprint.render_as_hash(events, view: :long), status: :ok
+        # }
 
-        # render json:events, status: :ok
+        render json:events, status: :ok
         # render json:EventBlueprint.render_as_hash(@event, view: :long), status: :ok
         #  events=Event.order(created_at: :desc).page(params[:page]).per(12)
      
