@@ -5,8 +5,15 @@ class AlertsController < ApplicationController
     before_action :authenticate_request, only: [:create]
       
     def index
-      alerts=Alert.all
-      render json:alerts, status: :ok
+      # alerts=Alert.all
+      # render json:alerts, status: :ok
+      alerts=Alert.order(created_at: :desc).page(params[:page]).per(20)
+
+      render json:{
+       alerts: AlertBlueprint.render_as_hash(alerts, view: :long),
+       total_pages: alerts.total_pages,
+       current_page: alerts.current_page
+    }
     end
     
     def show
