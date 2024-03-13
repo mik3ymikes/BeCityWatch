@@ -6,8 +6,13 @@ Rails.application.routes.draw do
     post 'login', to:'sessions#create'
 end
 
+# this works last one i had
   resources :events 
   
+  # resources :events do
+  #   resources :comments, only: [:create, :index], controller: 'events/comments'
+  # end
+
 
 # check on this right below idk
 resources :alerts 
