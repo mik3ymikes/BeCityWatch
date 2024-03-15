@@ -76,7 +76,7 @@ class EventsController < ApplicationController
      def join
         event=Event.find(params[:event_id])
      #    check if current user is event creator
-        return render json: {error: "You cant join you own event."}, status: :unprocessable_entity if event.creator.id == 
+        return render json: {error: "You cant join you own event."}, status: :unprocessable_entity if event.user.id == 
         @current_user.id
  
      #    check if the event is full
