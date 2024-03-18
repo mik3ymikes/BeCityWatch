@@ -83,8 +83,7 @@ class EventsController < ApplicationController
         #    return render json: {error: "event is full."}, status: :unprocessable_entity if event.participants.count >=event.guests
  
     # check if the current user is already a participant
-    return render json: {error: "You are already a participant."}, status: :unprocessable_entity if event.participants.include? 
-    (@current_user)
+    return render json: {error: "You are already a participant."}, status: :unprocessable_entity if event.participants.include? (@current_user)
  
      event.participants << @current_user
      
