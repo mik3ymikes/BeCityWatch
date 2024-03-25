@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
     has_many :created_events, class_name: "Event", foreign_key: "user_id"
 
+    # added the depenent destroy to the next two to try solve issue of not letting delete with attendess
     has_many :event_participants
     has_many :events, through: :event_participants
 

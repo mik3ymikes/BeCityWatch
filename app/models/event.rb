@@ -12,7 +12,7 @@ class Event < ApplicationRecord
   has_one_attached :cover_image
 
 
-  has_many :event_participants
+  has_many :event_participants, dependent: :destroy
   has_many :participants, through: :event_participants, source: :user
 
   def start_date_time_cannot_be_in_past
