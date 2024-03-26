@@ -5,8 +5,9 @@ class CommentBlueprint < Blueprinter::Base
 
   fields :content, :created_at
 
-  view :short do
-    include_association :user, blueprint: UserBlueprint, view: :normal
+  view :normal do
+    fields :content, :created_at
+    association :user, blueprint: UserBlueprint, view: :normal
   end
 end
 # might need to check on this association?

@@ -15,6 +15,7 @@ class EventBlueprint < Blueprinter::Base
 
     view :long do
         fields :content, :start_date_time, :end_date_time, :created_at, :title, :cover_image_url
+        # association :comments, blueprint: CommentBlueprint, view: :normal
         association :participants, blueprint: UserBlueprint, view: :normal
         association :user, blueprint: UserBlueprint, view: :normal
         field :has_joined do |event, options|
