@@ -1,13 +1,17 @@
 class AlertsController < ApplicationController
     before_action :set_alert, only:[:update, :destroy, :show]
-    # before_action :authenticate_request, only: [:index, :show, :update, :destroy]
-    # fixed issue but may have to look into this
-    before_action :authenticate_request, only: [:create]
+
+    before_action:authenticate_request
+
+    #  below is last known before action that worked without zipcode
+    # before_action :authenticate_request, only: [:create]
       
     def index
-      # alerts=Alert.all
-      # render json:alerts, status: :ok
-      alerts=Alert.order(created_at: :desc).page(params[:page]).per(20)
+     
+
+      alerts = Alert.with_same_zipcode_as_user(@current_user).order(created_at: :desc).page(params[:page]).per(20)
+
+      # alerts=Alert.order(created_at: :desc).page(params[:page]).per(20)
 
       render json:{
        alerts: AlertBlueprint.render_as_hash(alerts, view: :long),
@@ -17,7 +21,7 @@ class AlertsController < ApplicationController
     end
     
     def show
-    #  render json: @alert, status: :ok
+    
     render json:AlertBlueprint.render_as_hash(@alert, view: :long), status: :ok
     end
     

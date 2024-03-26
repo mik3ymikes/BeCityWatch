@@ -6,7 +6,7 @@ class Alert < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
 
 
-  # scope :with_same_zipcode_as_user, ->(user) { joins(:user).merge(User.with_same_zipcode(user.zipcode)) }
+  scope :with_same_zipcode_as_user, ->(user) { joins(:user).merge(User.with_same_zipcode(user.zipcode)) }
 
   # def cover_image_url
   #   #url helpers
