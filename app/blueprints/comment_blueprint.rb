@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentBlueprint < Blueprinter::Base
-    dentifier :id
+  identifier :id
 
   fields :content, :created_at
 
