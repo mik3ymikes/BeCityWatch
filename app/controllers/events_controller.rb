@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
-    # before_action :set_event, only: [:show, :update, :destroy] maybe need this??!?
-    # before_action :authenticate_request, only: [:create]
+   
     
     # before_action :authenticate_request, except: [:index] 
     before_action :set_event, only:[:update, :destroy, :show]
@@ -31,13 +30,6 @@ class EventsController < ApplicationController
 
 
 
-        # render json: {
-        # events: EventBlueprint.render_as_hash(events, view: :long), status: :ok
-        # }
-
-        # render json:events, status: :ok
-        # render json:EventBlueprint.render_as_hash(@event, view: :long), status: :ok
-     
  
      end
  
@@ -92,10 +84,7 @@ class EventsController < ApplicationController
         return render json: {error: "You cant join you own event."}, status: :unprocessable_entity if event.user.id == 
         @current_user.id
  
-     #    check if the event is full
-        #    return render json: {error: "event is full."}, status: :unprocessable_entity if event.participants.count >=event.guests
- 
-    # check if the current user is already a participant
+     
     return render json: {error: "You are already a participant."}, status: :unprocessable_entity if event.participants.include? (@current_user)
  
      event.participants << @current_user
@@ -131,10 +120,6 @@ class EventsController < ApplicationController
      end
 
 
-    #  def some_method
-    #     event = Event.find(params[:id])
-    #     username = event.user.username
-    #     # Now you have access to the username associated with the event's user
-    #   end
+  
  end
  
