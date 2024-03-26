@@ -7,7 +7,12 @@ class EventsController < ApplicationController
     before_action :authenticate_request, except: [:index, :show] 
      
      def index
-        # events=Event.all
+        
+        # events = Event.with_same_zipcode_as_user(@current_user).order(created_at: :desc).page(params[:page]).per(21)
+        
+
+        # events = Event.with_same_zipcode_as_user(@current_user).order(created_at: :desc).page(params[:page]).per(21)
+        
          events=Event.order(created_at: :desc).page(params[:page]).per(21)
 
         render json:{

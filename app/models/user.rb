@@ -7,7 +7,9 @@ class User < ApplicationRecord
         with: URI::MailTo::EMAIL_REGEXP
     }
     validates :zipcode, presence: true, length: { maximum: 5 }, numericality: { only_integer: true }
-
+    
+    #  added this to try and zipcode scope
+    # scope :with_same_zipcode, ->(zipcode) { where(zipcode: zipcode) }
 
     has_many :alerts, dependent: :destroy
     has_many :events, dependent: :destroy
@@ -15,7 +17,7 @@ class User < ApplicationRecord
 
     has_many :created_events, class_name: "Event", foreign_key: "user_id"
 
-    # added the depenent destroy to the next two to try solve issue of not letting delete with attendess
+   
     has_many :event_participants
     has_many :events, through: :event_participants
 
