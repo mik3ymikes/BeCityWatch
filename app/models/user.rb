@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :zipcode, presence: true, length: { maximum: 5 }, numericality: { only_integer: true }
     
     #  added this to try and zipcode scope
-    # scope :with_same_zipcode, ->(zipcode) { where(zipcode: zipcode) }
+    scope :with_same_zipcode, ->(zipcode) { where(zipcode: zipcode) }
 
     has_many :alerts, dependent: :destroy
     has_many :events, dependent: :destroy

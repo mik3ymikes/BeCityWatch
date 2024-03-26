@@ -16,7 +16,7 @@ class Event < ApplicationRecord
   has_many :participants, through: :event_participants, source: :user
 
   
-  # scope :with_same_zipcode_as_user, ->(user) { joins(:user).merge(User.with_same_zipcode(user.zipcode)) }
+  scope :with_same_zipcode_as_user, ->(user) { joins(:user).merge(User.with_same_zipcode(user.zipcode)) }
   # scope :with_same_zipcode_as_user, ->(user) { joins(user: :zipcode).where("users.zipcode = ?", user.zipcode)}
 
 

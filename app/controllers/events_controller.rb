@@ -4,16 +4,24 @@ class EventsController < ApplicationController
     
     # before_action :authenticate_request, except: [:index] 
     before_action :set_event, only:[:update, :destroy, :show]
-    before_action :authenticate_request, except: [:index, :show] 
+    ##this was before if i need to revert down below...i changed to auth_request
+    # before_action :authenticate_request, except: [:index, :show]
+    before_action :authenticate_request
+
+    
+
+    
+
+    
      
      def index
         
-        # events = Event.with_same_zipcode_as_user(@current_user).order(created_at: :desc).page(params[:page]).per(21)
+        events = Event.with_same_zipcode_as_user(@current_user).order(created_at: :desc).page(params[:page]).per(21)
         
 
-        # events = Event.with_same_zipcode_as_user(@current_user).order(created_at: :desc).page(params[:page]).per(21)
+      
         
-         events=Event.order(created_at: :desc).page(params[:page]).per(21)
+        #  events=Event.order(created_at: :desc).page(params[:page]).per(21)
 
         render json:{
          events: EventBlueprint.render_as_hash(events, view: :short),
