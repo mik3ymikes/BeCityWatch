@@ -8,12 +8,16 @@ class AlertBlueprint < Blueprinter::Base
     end
 
 
-
-
-    
     view :long do
         fields :content, :created_at, :title
         association :user, blueprint: UserBlueprint, view: :normal
-        # association :comments, blueprint: CommentBlueprint, view: :normal
+       
     end
+
+    view :longer do
+        fields :content, :created_at, :title
+        association :user, blueprint: UserBlueprint, view: :normal
+        association :comments, blueprint: CommentBlueprint, view: :normal
+    end
+
 end

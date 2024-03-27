@@ -22,7 +22,7 @@ class AlertsController < ApplicationController
     
     def show
     
-    render json:AlertBlueprint.render_as_hash(@alert, view: :long), status: :ok
+    render json:AlertBlueprint.render_as_hash(@alert, view: :longer), status: :ok
     end
     
     def create
