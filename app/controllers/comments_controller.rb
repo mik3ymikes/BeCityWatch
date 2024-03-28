@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
         end
       end
 
+
   def update
     comment = @alert.comments.find(params[:id])
     if comment.update(comment_params)
@@ -19,11 +20,14 @@ class CommentsController < ApplicationController
     end
   end
 
+
   def destroy
     comment = @alert.comments.find(params[:id])
     comment.destroy
     head :no_content
   end
+
+
 
   private
 
@@ -31,6 +35,8 @@ class CommentsController < ApplicationController
     @alert = Alert.find(params[:alert_id])
   end
 
+
+  
   def comment_params
     params.require(:comment).permit(:content)
   end
