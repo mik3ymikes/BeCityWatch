@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post 'login', to:'sessions#create'
 end
 
-# this works last one i had
+
   resources :events do
   #localhost:3000/events/1/join
   post 'join', to: 'events#join'
@@ -26,15 +26,7 @@ resources :users do
 end
 end
 
-# this last known working
-  # resources :users do
-  #   end
-  #   resources :alerts
-  # end
 
 
 
-  # resources :events 
-  # resources :users do
-  #   get 'events', to: "users#events_index"
-  # end
+
