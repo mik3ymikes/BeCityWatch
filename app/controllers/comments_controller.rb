@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
     before_action :set_alert
+    before_action :authenticate_request
 
     def create
-        comment = @alert.comments.new(comment_params.merge(user: current_user))
+        comment = @alert.comments.new(comment_params.merge(user: @current_user))
         if comment.save
           render json: comment, status: :created
         else
           render json: comment.errors, status: :unprocessable_entity
         end
       end
+
+        
 
 
   def update
