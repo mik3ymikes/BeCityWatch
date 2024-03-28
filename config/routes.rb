@@ -20,7 +20,12 @@ end
 
 
 # check on this right below idk
-resources :alerts 
+resources :alerts do
+  resources :comments, only: [:create, :update, :destroy]
+end
+# resources :alerts 
+
+
 resources :users do
   get 'alerts', to: "users#alerts_index"
 end
