@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :set_alert, :set_event
+    before_action :set_alert
     # before_action :set_commentable
     before_action :authenticate_request
 
