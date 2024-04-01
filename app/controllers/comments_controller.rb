@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
-    before_action :set_alert
+    before_action :set_alert, :set_event
+    # before_action :set_commentable
     before_action :authenticate_request
+
+
+
+
 
     def create
         comment = @alert.comments.new(comment_params.merge(user: @current_user))
@@ -32,11 +37,22 @@ class CommentsController < ApplicationController
 
 
 
+
+
+
+
+
+
   private
 
   def set_alert
     @alert = Alert.find(params[:alert_id])
   end
+
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
+
 
 
 
