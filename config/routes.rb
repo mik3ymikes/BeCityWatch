@@ -7,11 +7,12 @@ Rails.application.routes.draw do
 end
 
 
-  resources :events do
+resources :events do
+  resources :comments, only: [:create, :update, :destroy]
   #localhost:3000/events/1/join
   post 'join', to: 'events#join'
-  #localhost:3000/events/1/leave
-  delete 'leave', to: 'events#leave'
+    #localhost:3000/events/1/leave
+    delete 'leave', to: 'events#leave'
   end
   
   # resources :events do
