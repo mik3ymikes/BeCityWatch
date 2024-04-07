@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
     before_action :set_alert, only:[:update, :destroy, :show]
 
-    before_action:authenticate_request
+    # before_action:authenticate_request
 
     #  below is last known before action that worked without zipcode
     # before_action :authenticate_request, only: [:create]
