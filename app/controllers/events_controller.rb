@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     before_action :set_event, only:[:update, :destroy, :show]
     ##this was before if i need to revert down below...i changed to auth_request
     # before_action :authenticate_request, except: [:index, :show]
-    before_action :authenticate_request
+    # before_action :authenticate_request
 
     
 
