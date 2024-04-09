@@ -4,7 +4,7 @@ class WebController < ApplicationController
   def bootstrap
 
     render json: {
-      current_user: UserBlueprint.render_as_hash(@current_user, view: :normal)
+      current_user: UserBlueprint.render_as_hash(@current_user, view: :me)
     }, status: :ok
   end
 end
