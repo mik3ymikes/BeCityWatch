@@ -8,6 +8,9 @@ end
 
 
 resources :events do
+  collection do
+    delete 'destroy_all', to: 'events#destroy_all'
+  end
   resources :comments, only: [:create, :update, :destroy]
   #localhost:3000/events/1/join
   post 'join', to: 'events#join'
