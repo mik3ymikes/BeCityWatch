@@ -78,6 +78,15 @@ class EventsController < ApplicationController
      end
 
 
+     def destroy_all
+        if Event.destroy_all
+          render json: { message: 'All events have been successfully destroyed.' }, status: :ok
+        else
+          render json: { error: 'Failed to destroy all events.' }, status: :unprocessable_entity
+        end
+      end
+      
+
      def join
         event=Event.find(params[:event_id])
      #    check if current user is event creator
